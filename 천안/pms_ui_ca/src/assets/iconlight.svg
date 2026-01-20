@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140.185" height="140.185" viewBox="0 0 140.185 140.185">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientTransform="matrix(0.924, 0.383, -0.383, 0.924, 0.229, -0.153)" gradientUnits="objectBoundingBox">
+      <stop offset="0.004" stop-color="#66adff"/>
+      <stop offset="0.053" stop-color="#5a9ae3"/>
+      <stop offset="0.156" stop-color="#4576ae"/>
+      <stop offset="0.263" stop-color="#33567f"/>
+      <stop offset="0.373" stop-color="#233c58"/>
+      <stop offset="0.485" stop-color="#162638"/>
+      <stop offset="0.6" stop-color="#0c151f"/>
+      <stop offset="0.721" stop-color="#05090d"/>
+      <stop offset="0.849" stop-color="#010203"/>
+      <stop offset="0.999"/>
+    </radialGradient>
+  </defs>
+  <circle id="타원_56" data-name="타원 56" cx="53.646" cy="53.646" r="53.646" transform="translate(0 41.059) rotate(-22.5)" fill="url(#radial-gradient)" style="mix-blend-mode: color-dodge;isolation: isolate"/>
+</svg>

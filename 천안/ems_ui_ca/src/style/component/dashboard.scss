@@ -1,0 +1,244 @@
+::before,
+::after {
+  background-repeat: no-repeat;
+  /* Set `background-repeat: no-repeat` to all elements and pseudo elements */
+  box-sizing: inherit;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  /* Inherit text-decoration and vertical align to ::before and ::after pseudo elements */
+  vertical-align: inherit;
+}
+
+* {
+  padding: 0;
+  /* Reset `padding` and `margin` of all elements */
+  margin: 0;
+}
+
+.dash-left {
+  height: 100%;
+  width: calc(74% - 15px);
+  margin-right: 15px;
+  float: left;
+  overflow: hidden;
+}
+
+.dash-right {
+  height: 100%;
+  width: 26%;
+  float: left;
+}
+
+.contents{
+  display: flex;
+  justify-content: left;
+  height: 100px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.content{
+  display: flex;
+  height: 100%;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+.blue-round{
+  width: 105px;
+  height: 100%;
+  color: #fff;
+  text-shadow: 0 0 9px #5cafff;
+  font-family: 'KHNPHDRegular';
+  background: url(@/assets/img/dashboard/00_top_roundline_b.png) no-repeat;
+  background-size: 100%;
+  background-position: center;
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.green-round{
+  width: 105px;
+  height: 100%;
+  color: #fff;
+  text-shadow: 0 0 9px #5cafff;
+  font-family: 'KHNPHDRegular';
+  background: url(@/assets/img/dashboard/00_top_roundline_g.png) no-repeat;
+  background-size: 100%;
+  background-position: center;
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content-text-box{
+  width: 75px;
+  background-size: 100% 20px;
+  background-position-y: bottom;
+  text-shadow: 0 0 9px #5cafff;
+  font-family: KHNPHUotfR;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  color: #fff;
+}
+
+.content-value-box {
+  width: 140px;
+  background-position: center;
+  text-shadow: 0 0 5px rgba(209, 250, 255, 0.5);
+  font-family: "LAB디지털" !important;
+  font-size: 18px;
+  text-align: right;
+  color: #f2fbff;
+}
+
+.right_title_div {
+  height: 18%;
+  width: 100%;
+}
+
+.dashinfo-pump-div {
+    width:100%;
+    height:70%;
+  }
+
+.right_title_font {
+  font-size: 21px;
+  font-weight: bold;
+  color: #5180b4;
+  line-height: 44px;
+  font-family: KHNPHDRegular;
+}
+
+.animation-title{
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column-reverse;;
+  height: 24px;
+}
+
+.animation-item {
+  -webkit-animation: scroll 12s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+  animation: scroll 12s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+}
+
+@-webkit-keyframes scroll {
+  0.0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px)
+  }
+  8.3% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px)
+  }
+  24.9% {
+    -webkit-transform: translateY(24px);
+    transform: translateY(24px)
+  }
+  41.5% {
+    -webkit-transform: translateY(24px);
+    transform: translateY(24px)
+  }
+  58.1% {
+    -webkit-transform: translateY(48px);
+    transform: translateY(48px)
+  }
+  74.7% {
+    -webkit-transform: translateY(48px);
+    transform: translateY(48px)
+  }
+  91.7% {
+    -webkit-transform: translateY(72px);
+    transform: translateY(72px)
+  }
+  100.0% {
+    -webkit-transform: translateY(72px);
+    transform: translateY(72px)
+  }
+}
+
+@keyframes scroll {
+  0.0% { 
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px)
+  }
+  8.3% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px)
+  }
+  24.9% {
+    -webkit-transform: translateY(24px);
+    transform: translateY(24px)
+  }
+  41.5% {
+    -webkit-transform: translateY(24px);
+    transform: translateY(24px)
+  }
+  58.1% {
+    -webkit-transform: translateY(48px);
+    transform: translateY(48px)
+  }
+  74.7% {
+    -webkit-transform: translateY(48px);
+    transform: translateY(48px)
+  }
+  91.7% {
+    -webkit-transform: translateY(72px);
+    transform: translateY(72px)
+  }
+  100.0% {
+    -webkit-transform: translateY(72px);
+    transform: translateY(72px)
+  }
+}
+
+.fL {
+  float: left;
+}
+
+.h30px{
+  height: 30px;
+}
+
+.h90{
+  height: calc(100% - 30px)
+}
+
+.w50{
+  width: 50%;
+}
+
+.w100{
+  width: 100%;
+}
+
+.flex-center-between{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.justify-start{
+  justify-content: flex-start !important;
+}
+
+.unit{
+  font-size: 16px;
+  color: #a4ceed;
+  font-family: 'KHNPHDRegular';
+  margin-left: 5px;
+}

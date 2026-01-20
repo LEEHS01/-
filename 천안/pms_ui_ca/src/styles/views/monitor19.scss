@@ -1,0 +1,317 @@
+.monitor-19 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+
+    .top-bar {
+        width: 100%;
+        height: 85px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        gap: 10px;
+
+        .logo {
+            height: 60%;
+            cursor: pointer;
+        }
+        .title {
+            font-size: 35px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        .top-line {
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            height: 32.5px;
+        }
+    }
+    
+    .nav-btn {
+        float: left;
+        padding: 5px 20px;
+        margin-left: 20px;
+        color: #fff;
+        background: #3c4fff33;
+        border-radius: 4px;
+        border: 1px solid #3c4fff;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .nav-btn.two {
+        left: 213px;
+    }
+    .nav-btn.three {
+        left: 285px;
+    }
+    .nav-btn.four {
+        left: 357px;
+    }
+    // gelix_lsj tab 선택
+    .selected {
+      border: 1px solid #00ffee;
+      background-color: #22536794;
+    }
+    .header {
+        width: 100%;
+        height: 80px;
+    }
+    .content{
+        padding: 20px;
+        height: calc(100vh - 80px);
+        display: flex;
+        gap: 20px;
+        .content-left{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 20px;
+            border: 1.5px solid #252d75;
+            padding: 5px;
+            float: left;
+            width: 30%;
+            height: 100%;
+            
+            .header{
+                float: left;
+                width: 279px;
+                height: 45px;
+                background: url('../assets/box-title.png');
+                text-align: center;
+                padding-top: 12px;
+                font-size: 18px;
+                font-weight: bold;
+                color: #fff;
+                text-shadow: 0px 0px 10px #24baff;
+            }
+            .pump-name{
+                font-size: 18px;
+                font-weight: bold;
+                color: #fff;
+                align-self: start;
+                margin:20px 40px;
+            } 
+        }
+        .content-right{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            float: left;
+            width: 70%;
+            height: 100%;
+            .calender-container{
+                display: flex;
+                flex-direction: row;
+                border-radius: 10px;
+                border: 1.5px solid #252d75;
+                padding: 5px;
+                float: left;
+                height: 5%;
+                margin-bottom: 15px;
+                .search {
+                    display: flex;
+                    gap: 6px;
+                    align-items: center;
+                    position: relative;
+                    margin: 0px 80px 0px 30px;
+                    input {
+                        border: none;
+                        outline: none;
+                        border-bottom: 2px solid #2660ab;
+                        border-radius: 10px;
+                        background: rgba(255, 255, 255, 0.1);
+                        padding: 6px 10px;
+                        color: white;
+                        font-size: 14px;
+                        cursor: pointer;
+                        width: 250px;
+                    }
+                    span {
+                        color: white;
+                    }
+                }
+                .button {
+                    outline: none;
+                    border: none;
+                    margin-right: 20px;
+                    padding: 10px 60px;
+                    background: linear-gradient(to right bottom, #0f77ff, #07418d);
+                    color: white;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    cursor: pointer;
+                }
+
+            }
+            .chart1-container{
+                border-radius: 20px;
+                border: 1.5px solid #252d75;
+                padding: 5px;
+                float: left;
+                height: 45%;
+                margin-bottom: 15px;
+                .chart {
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 14px;
+                }
+            }
+            .chart2-container{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 5px;
+                float: left;
+                height: 49%;
+                .chart2-area1{
+                    border-radius: 20px;
+                    border: 1.5px solid #252d75;
+                    padding: 5px;
+                    width: 49%;
+                    
+                }
+                .chart2-area2{
+                    border-radius: 20px;
+                    border: 1.5px solid #252d75;
+                    padding: 5px;
+                    width: 49%;
+                    
+                }
+                .chart {
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 14px;
+                } 
+            }
+            
+        }
+    }
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      
+      .modal-content {
+        background: #2a2a3b;
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+        border-radius: 8px;
+        width: 80%;
+        height: 80%;
+        color: white;
+      }
+      
+      .selection-group {
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+        height: 90%;
+        margin-bottom: 20px;
+      }
+      
+      .selection {
+        flex: 1;
+        margin: 0 10px;
+      }
+      
+      .selection h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #00ffee;
+      }
+      
+      .selection ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .selection li {
+        margin-bottom: 8px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: #3c4fff33;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      
+      .selection li:hover {
+        background-color: #3c4fff77;
+      }
+      
+      .selection li.selected {
+        background-color: #00ffee;
+        color: #000;
+      }
+      .input-group{
+        margin-bottom: 20px;
+      }
+      
+      button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+      }
+      
+      button + button {
+        margin-left: 10px;
+      }
+      
+      /* 모달 애니메이션 */
+      .modal-enter-active,
+      .modal-leave-active {
+        transition: opacity 0.3s ease;
+      }
+      
+      .modal-enter,
+      .modal-leave-to /* .modal-leave-active 이전 클래스와 동일 */ {
+        opacity: 0;
+      }
+
+      .icon-button {
+        width: 40px; /* 버튼의 너비 */
+        height: 40px; /* 버튼의 높이 */
+        background-color: #d0e0f1; /* 파란색 배경 */
+        border-radius: 10px; /* 모서리 둥글게 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      
+      .icon-button img {
+        width: 60%; /* 이미지 크기 조절 (버튼 크기의 60%) */
+        height: 60%; /* 이미지 크기 조절 */
+        object-fit: contain; /* 이미지가 버튼 내에서 잘 맞도록 */
+      }
+    
+}

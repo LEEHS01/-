@@ -1,0 +1,29 @@
+.title_wrap {
+    display: flex;
+    align-items: center;
+    height: 50px;
+     .title {
+             height: 100%;
+             text-shadow: 0 0 9px #5cafff;
+             font-family: "KHNPHDRegular";
+             font-size: 21px;
+             font-weight: normal;
+             font-stretch: normal;
+             font-style: normal;
+             line-height: 2.5;
+             letter-spacing: normal;
+             text-align: left;
+             color: #fff;
+             margin: 0 0 10px 35px;
+             background-position-x: right;
+     }
+     .title_line {
+             background: url("@/assets/img/title_name_box.png");
+             background-size: 100% 100%;
+             width: 140px;
+             height: 100%;
+             margin-left: -50px;
+             mix-blend-mode: color-dodge;
+     }
+ }
+ 

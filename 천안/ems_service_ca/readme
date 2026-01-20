@@ -1,0 +1,20 @@
+/*
+서버 실행 > npm start 또는 npm run start
+
+동작 구조
+vue store에서 /api/요청페이지 요청을 보냄.
+    routes/analysis.js 만듦 -> 역할 ( vue store에서 요청 보낸 await axios.post('http://localhost:3000/api/analysis') analysis를 찾아감.
+    routes/analysis.js 안에 있는 소스 > router.post('/analysis', dataController.getChart) 해당 router가 작동 하고 dataController.getChart 를 실행시킴.
+    -- dataController 이란 --
+    dataController = require('../controllers/analysisController');
+    controllers 폴더에 해당 페이지 컨트롤러.js를 만듦.
+    이 analysisController.js 에서 db요청을 보내고 받음.
+
+    
+const apiRoutes = require('./routes/analysis');
+
+1. query는 utils/ 해당 페이지 쿼리.js 를 만듦.
+    query를 사용할 때에는 controllers에서 const queries = require('../utils/analysisQuery') query를 받아온 후
+    conn.query(queries.chart_query) 이런 식으로 queries 안에서 사용할 쿼리를 꺼내서 사용하면 끝.
+    
+*/ 

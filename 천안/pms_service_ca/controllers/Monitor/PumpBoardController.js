@@ -1,0 +1,99 @@
+const logger = require('../../logger').logger
+const queries = require('../../utils/query/PumpBoardMapper.js')
+const { pms_db } = require('../../db.js')
+
+exports.alarm = async (req, res) => {
+  logger.info('PumpBoardController::alarm')
+  let conn
+  try {
+    const query = queries.alarm()
+    conn = await pms_db.getConnection()
+    const rows = await conn.query(query)
+    const response = {
+      status: 200,
+      message: 'success',
+      datas: rows
+    }
+    res.json(response)
+  } catch(err) {
+    logger.error('PumpBoardController::alarm: ', err.stack)
+    res.status(500).json({ message: 'Internal Server Error' })
+  } finally {
+    if (conn) {
+      conn.release()
+    }
+  }
+}
+
+exports.disCharge = async (req, res) => {
+  logger.info('PumpBoardController::disCharge')
+  let conn
+  try {
+    const query = queries.disCharge()
+    conn = await pms_db.getConnection()
+    const rows = await conn.query(query)
+    const response = {
+      status: 200,
+      message: 'success',
+      datas: rows
+    }
+    res.json(response)
+  } catch(err) {
+    logger.error('PumpBoardController::disCharge: ', err.stack)
+    res.status(500).json({ message: 'Internal Server Error' })
+  } finally {
+    if (conn) {
+      conn.release()
+    }
+  }
+}
+
+exports.info = async (req, res) => {
+  logger.info('PumpBoardController::info')
+  let conn
+  try {
+    const query = queries.info()
+    conn = await pms_db.getConnection()
+    const rows = await conn.query(query)
+    const response = {
+      status: 200,
+      message: 'success',
+      datas: rows
+    }
+    res.json(response)
+  } catch(err) {
+    logger.error('PumpBoardController::info: ', err.stack)
+    res.status(500).json({ message: 'Internal Server Error' })
+  } finally {
+    if (conn) {
+      conn.release()
+    }
+  }
+}
+
+exports.detailInfo = async (req, res) => {
+  logger.info('PumpBoardController::detailInfo')
+  let conn
+  try {
+    const params = {
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+    }
+    const query = queries.detailInfo(params)
+    conn = await pms_db.getConnection()
+    const rows = await conn.query(query)
+    const response = {
+      status: 200,
+      message: 'success',
+      datas: rows
+    }
+    res.json(response)
+  } catch(err) {
+    logger.error('PumpBoardController::detailInfo: ', err.stack)
+    res.status(500).json({ message: 'Internal Server Error' })
+  } finally {
+    if (conn) {
+      conn.release()
+    }
+  }
+}

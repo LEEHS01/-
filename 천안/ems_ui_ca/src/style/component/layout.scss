@@ -1,0 +1,67 @@
+
+.fL {
+    float: left;
+ }
+ 
+ .fR {
+    float: right;
+ } 
+
+.detail_text {
+	// width: 70%;
+	text-shadow: 0 0 9px #5cafff;
+	color: #c3eaff;
+}
+
+/*div 박스 테두리 이미지*/
+.div-middle {
+    width: calc(100% - 10px);
+    height: 100%;
+    background-image: url("@/assets/img/box_bg_middle.png");
+    background-size: 100% 100%;
+ }
+/* 선 */
+ .div-line-top {
+    width: 100%;
+    height: 5px;
+    background: url("@/assets/img/spark_x.png") no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: -5px;
+    mix-blend-mode: color-dodge;
+ }
+
+ /*div_title*/
+ .div_title {
+	height: 40px;
+	background: url("@/assets/img/title_bar.png") no-repeat;
+	background-size: 100% 100%;
+	mix-blend-mode: color-dodge;
+	color: #ffffff;
+	font-family: KHNPHDRegular;
+	font-size: 19px;
+	text-shadow: 0 0 10px #000;
+	line-height: 2;
+	text-indent: 20px;
+}
+
+/*스캔 라인*/
+.scan_line{
+	height: 8%;
+    width: 34%;
+    position: absolute;
+    top: 15%;
+    background: url("@/assets/img/scan.png") no-repeat;
+    mix-blend-mode: screen;
+    background-size: 100% 100%;
+    background-position: center;
+    opacity: 0.7;
+}
+.scanning{animation: scanning 8s;animation-delay: 0;animation-iteration-count: infinite;}
+@keyframes scanning{
+	0%{top: 15%; opacity: 0;} 
+	20%{ opacity: 0.5;}
+	40%{ opacity: 0.7;}
+	60%{ opacity: 0.5;}
+	80%{top: 64%; opacity: 0;}
+	100%{top: 64%; opacity: 0;}
+}

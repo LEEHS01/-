@@ -1,0 +1,30 @@
+{
+  "name": "pms-service-ca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://192.168.0.18:8084/kwater/pms-service-ca.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base64-js": "^1.5.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fft-js": "^0.0.12",
+    "mariadb": "^3.2.0",
+    "mathjs": "^13.0.0",
+    "pms-service-ca": "file:",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "zlib": "^1.0.5"
+  }
+}
