@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Build-Jdk-Spec: 21
+Implementation-Title: WAIO_ServerAgent
+Implementation-Version: 2.0.135-SNAPSHOT
+Created-By: Maven Integration for Eclipse
+
