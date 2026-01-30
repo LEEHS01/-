@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunksmartems_boryeong"]=self["webpackChunksmartems_boryeong"]||[]).push([[443],{7381:function(n,e,r){r.r(e),r.d(e,{default:function(){return f}});var s=r(3396);const t={class:"about"},a=(0,s._)("h1",null,"This is an about page",-1),u=[a];function o(n,e){return(0,s.wg)(),(0,s.iD)("div",t,u)}var c=r(89);const i={},b=(0,c.Z)(i,[["render",o]]);var f=b}}]);
+//# sourceMappingURL=about.a0474527.js.map
