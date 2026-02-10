@@ -1,0 +1,18 @@
+{
+  "host": "10.65.1.82",
+  "port": "3306",
+  "user": "root",
+  "password": "water2022",
+  "database": "SMART_PMS",
+  "db_table": "TB_PM",
+  "num_sensors": 30,
+  "sample_rate": 12800,
+  "nidir": "C:\\NI Sencing",
+  "nidir_backup": "C:\\NI Sencing\\backup",
+  "chunk_size": 50,
+  "last_sec": 2,
+  "ipc_loc":" 전동3가압장",
+  "kafka_topic": "PMS_VIB_CA",
+  "kafka_brokers": ["10.65.1.82:9092"],
+  "log_level": "INFO"  
+}

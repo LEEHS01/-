@@ -1,0 +1,52 @@
+{
+  "ems_scada_info": {
+    "db_host": "192.168.0.35",
+    "db_port": "3306",
+    "db_user": "root",
+    "db_password": "gelix123",
+    "database": "TEST",
+    "db_input_table": "TB_DATA_RAW_TAG",
+    "target_tag_table": "TB_TAG_MNG_EMS_BR",
+    "kafka_topic1": "CCAWGS1_data",
+    "kafka_topic2": "CCAWGS2_data",
+    "kafka_group": "ems_scada_data",
+    "kafka_brokers": ["192.168.0.30:9092"]
+  },
+  "pms_scada_info": {
+    "db_host": "192.168.0.35",
+    "db_port": "3306",
+    "db_user": "root",
+    "db_password": "gelix123",
+    "database": "TEST",
+    "db_input_table": "TB_PUMP_SCADA",
+    "target_tag_table": "TB_TAG_MNG_PMS",
+    "kafka_topic1": "CCAWGS1_data",
+    "kafka_topic2": "CCAWGS2_data",
+    "kafka_group": "pms_scada_data",
+    "kafka_brokers": ["192.168.0.30:9092"]
+  },
+  "pms_vib_info": {
+    "db_host": "192.168.0.35",
+    "db_port": "3306",
+    "db_user": "root",
+    "db_password": "gelix123",
+    "database": "TEST",
+    "db_input_table": "TB_PM_TEST_81",
+    "kafka_topic1": "PMS_VIB",
+    "kafka_group": "pms_vib_data",
+    "kafka_brokers": ["192.168.0.30:9092"]
+  },
+  "alarm_info": {
+    "db_host": "192.168.0.35",
+    "db_port": "3306",
+    "db_user": "root",
+    "db_password": "gelix123",
+    "database": "TEST",
+    "db_input_table": "TB_EMS_ALARM",
+    "kafka_topic1": "ai_popup",
+    "kafka_group": "ems_alarm",
+    "kafka_brokers": ["192.168.0.30:9092"]
+  },
+  "log_level_file": "DEBUG",
+  "log_level_console": "DEBUG"
+}

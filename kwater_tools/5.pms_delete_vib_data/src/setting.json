@@ -1,0 +1,6 @@
+{
+  "target_dir": "C:\\NI Sensing",
+  "backup_dir": "C:\\NI Sensing\\backup",
+  "processed_dir": "C:\\PMS\\kafka_producer_ipc\\PROCESSED_FILES",
+  "log_level": "INFO"  
+}

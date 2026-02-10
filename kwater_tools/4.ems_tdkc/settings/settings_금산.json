@@ -1,0 +1,28 @@
+{
+  "ems_scada_info": {
+    "db_host": "10.93.3.29",
+    "db_port": "3306",
+    "db_user": "root",
+    "db_password": "water2022",
+    "database": "SMART_EMS",
+    "db_input_table": "TB_DATA_RAW_TAG",
+    "target_tag_table": "TB_TAG_MNG_EMS",
+    "kafka_topic1": "CGSWGS1_data",
+    "kafka_topic2": "CGSWGS2_data",
+    "kafka_group": "ems_scada_data",
+    "kafka_brokers": ["localhost:9092"]
+  },
+  "alarm_info": {
+    "db_host": "10.93.3.29",
+    "db_port": "3306",
+    "db_user": "root",
+    "db_password": "water2022",
+    "database": "SMART_EMS",
+    "db_input_table": "TB_EMS_ALARM",
+    "kafka_topic1": "ai_popup",
+    "kafka_group": "ems_alarm",
+    "kafka_brokers": ["localhost:9092"]
+  },
+  "log_level_file": "INFO",
+  "log_level_console": "ERROR"
+}

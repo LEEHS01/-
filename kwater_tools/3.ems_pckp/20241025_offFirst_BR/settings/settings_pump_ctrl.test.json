@@ -1,0 +1,69 @@
+{
+  "vip": "192.168.0.114",
+  "db_host": "192.168.0.35",
+  "db_port": "3306",
+  "db_user": "root",
+  "db_password": "gelix123",
+  "database": "TEST",
+  "ptr_ctr_inf": "TB_PTR_CTR_INF",
+  "old_data_check_time": 900,
+  "ai_mode_tag": [
+    {
+      "ai_mode": "881-355-EMS-1001",
+      "auto": "881-355-EMS-1002",
+      "half_auto": "881-355-EMS-1003",
+      "web_confirm": "881-355-EMS-1004",
+      "ai_result": "881-355-EMS-1901"
+    }, 
+    {
+      "ai_mode": "881-455-EMS-2001",
+      "auto": "881-455-EMS-2002",
+      "half_auto": "881-455-EMS-2003",
+      "web_confirm": "881-455-EMS-2004",
+      "ai_result": "881-455-EMS-1901"
+    }
+  ],
+  "pump_on_tag": [
+    ["881-355-PMC-4111", "881-355-PMC-4112", "881-355-PMC-4113"],
+    ["881-455-PMC-8020", "881-455-PMC-8030"]
+  ],
+  "pump_off_tag": [
+    ["881-355-PMC-4151", "881-355-PMC-4152", "881-355-PMC-4153"],
+    ["881-455-PMB-8520", "881-455-PMB-8530"]
+  ],
+  "pump_freq_tag": [
+    ["", "881-355-HZC-4112", "881-355-HZC-4113"],
+    ["881-455-SPC-1100", "881-455-SPC-1101"]
+  ],
+  "ctrl_no_pass_mode": false,
+  "ctrl_waiting_time": 60,
+  "loc_cnt": 2,
+  "tb_info": {
+    "kafka_topic": "ems_pump", 
+    "db_table": "TB_HMI_CTR_TAG", 
+    "target_cols": ["tag", "time", "value", "LOC"], 
+    "pk_cols": ["tag", "time"], 
+    "cvt_need_cols": ["value"],
+    "time_col": "time",
+    "excluded_tags": [],
+    "idx_col": "LOC",
+    "ai_mode_check": true
+  },
+  "alarm_info": {
+    "db_table": "TB_EMS_ALARM",
+    "id_ban": 233000,
+    "id_end": 234000,
+    "db_flag": "0",
+    "msg_end": "AI 펌프제어를 수행하였습니다",
+    "msg_ban": "AI 펌프제어 추천 팝업이 발생하였습니다",
+    "link": "http://waio-portal-vip:38085/songsu",
+    "loc": ["천안정수장", "목천가압장"],
+    "old_time": 600
+  },
+  "kafka_group": "pump_producer",
+  "kafka_brokers": ["192.168.0.30:9092"],
+  "period": 60,
+  "alarm_period": 10,
+  "log_level_file": "DEBUG",
+  "log_level_console": "DEBUG"
+}

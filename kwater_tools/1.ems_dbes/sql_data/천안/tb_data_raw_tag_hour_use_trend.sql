@@ -1,0 +1,15 @@
+INSERT IGNORE INTO TB_DATA_RAW_TAG_HOUR_USE_TREND 
+    SELECT TS, TAGNAME, SUM(VALUE) AS VALUE, 100, '' 
+    FROM
+    (
+      SELECT  *	FROM TB_DATA_RAW_TAG				
+        WHERE 1=1
+        AND TAGNAME IN(
+                    '881-355-PWI-7405',
+                    '881-355-PWI-7425',
+                    '881-355-PWI-7445',
+                    '881-355-PWI-7465'
+                  )
+        AND TS LIKE CONCAT(DATE_FORMAT(DATE_ADD(NOW(),INTERVAL -1 HOUR),'%Y-%m-%d %H'),'%')
+    ) T	
+    GROUP BY TAGNAME

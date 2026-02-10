@@ -1,0 +1,46 @@
+{
+  "vip": "",
+  "db_host": "10.73.1.55",
+  "db_port": "3306",
+  "db_user": "root",
+  "db_password": "water2022",
+  "database": "SMART_EMS",
+  "evt_infos": [
+    {
+      "sql": "tb_data_raw_tag_hour_use_trend.sql"
+    },
+    {
+      "sql": "tb_data_raw_tag_hour.sql"
+    },
+    {
+      "sql": "tb_data_raw_tag_pwq_hour.sql"
+    },
+    {
+      "sql": "delete_tb_data_raw_tag.sql"
+    },
+    {
+      "sql": "delete_tb_pm.sql"
+    }
+  ],
+  "peak_info": {
+    "get_query": {
+      "now_sql": "SELECT value FROM TB_DATA_RAW_TAG WHERE tagname IN ('740-351-PWI-9011','740-351-PWI-9021') and VALUE > 0 ORDER BY ts desc LIMIT 1;",
+      "target_sql": "SELECT value from TB_PTR_CTR_INF where tag = '740-351-PEAKGOAL-0001';",
+      "m10_sql": "SELECT prdct_pwr, COUNT(*) AS cnt1 FROM TB_PEAK_PWR_PRDCT_RST where cnfrm_time = DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:00'),INTERVAL +10 MINUTE) ORDER BY anly_time DESC LIMIT 1;",
+      "h1_sql": "SELECT prdct_pwr,COUNT(*) AS cnt2 FROM TB_PEAK_PWR_PRDCT_RST where cnfrm_time = DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:00'),INTERVAL +60 MINUTE) ORDER BY anly_time DESC LIMIT 1;",
+      "h2_sql": "SELECT prdct_pwr,COUNT(*) AS cnt3 FROM TB_PEAK_PWR_PRDCT_RST  where cnfrm_time =  DATE_ADD(DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:00'),INTERVAL + 120 MINUTE) ORDER BY anly_time DESC LIMIT 1;"
+    },
+    "event_query": {
+      "now_sql": "INSERT INTO TB_EMS_ALARM VALUES ('222000',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s'),'전력이 목표 피크치를 초과했습니다.','http://waio-portal-vip:38085/peak',current_timestamp(),current_timestamp(),'0');",
+      "m10_sql": "INSERT INTO TB_EMS_ALARM VALUES ('223000',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s'),'10분후 예상전력이 목표 피크치를 초과합니다.','http://waio-portal-vip:38085/peak',current_timestamp(),current_timestamp(),'0');",
+      "h1_sql": "INSERT INTO TB_EMS_ALARM VALUES ('224000',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s'),'1시간 후 예상전력이 목표 피크치를 초과합니다.','http://waio-portal-vip:38085/peak',current_timestamp(),current_timestamp(),'0');",
+      "h2_sql": "INSERT INTO TB_EMS_ALARM VALUES ('225000',DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s'),'2시간 후 예상전력이 목표 피크치를 초과합니다.','http://waio-portal-vip:38085/peak',current_timestamp(),current_timestamp(),'0');"
+    }
+  },
+  "data_folder": "sql",
+  "period": 60,
+  "period_peak": 60,
+  "start_minute": "05",
+  "log_level_file": "DEBUG",
+  "log_level_console": "ERROR"
+}

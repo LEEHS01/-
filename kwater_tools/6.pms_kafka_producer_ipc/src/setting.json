@@ -1,0 +1,18 @@
+{
+  "host": "192.168.0.35",
+  "port": "3306",
+  "user": "root",
+  "password": "gelix123",
+  "database": "TEST",
+  "db_table": "TB_PM_TEST",
+  "num_sensors": 42,
+  "sample_rate": 12800,
+  "nidir": "C:\\NI Sensing",
+  "nidir_backup": "C:\\NI Sensing\\backup",
+  "chunk_size": 50,
+  "last_sec": 10,
+  "ipc_loc":"보령정수장",
+  "kafka_topic": "PMS_KAFKA_TEST",
+  "kafka_brokers": ["192.168.0.30:9092"],
+  "log_level": "DEBUG"  
+}
