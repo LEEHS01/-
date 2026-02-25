@@ -1,0 +1,6 @@
+{
+  "process_period_mins": 5.0,
+  "ai_friout_trend_correction_var_a": 0.75,
+  "ai_friout_trend_saturation_min": 5000.0,
+  "ai_friout_trend_saturation_max": 20000.0
+}

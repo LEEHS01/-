@@ -1,0 +1,13 @@
+version: '3'
+services:
+  csswgd_aos_web:
+    restart: always
+    container_name: CSSWGC_AOS_WEB_001
+    image: hqggbpvip1:22222/csswgd/csswgd_aos_web:1.0.0
+    volumes:
+      - /workspace/container_volumes/aos_web/dist:/home/app
+      - /workspace/container_volumes/aos_web/conf/default.conf:/etc/nginx/conf.d/default.conf
+      - /workspace/container_volumes/aos_web/conf/conf/nginx.conf:/etc/nginx/nginx.conf
+      - /workspace/container_volumes/logs/aos_web:/home/log
+    network_mode: host
+  #  privileged: true

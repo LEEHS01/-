@@ -1,0 +1,18 @@
+version: '3'
+services:
+  ccjwgd_aos_api:
+    restart: always
+    container_name: CCJWGC_AOS_API_001
+    image: hqggbpvip1:22222/ccjwgd/ccjwgd_aos_api:1.0.0
+    volumes:
+      - /workspace/container_volumes/aos_api:/home/app
+      - /workspace/container_volumes/logs/aos_api:/home/log
+    network_mode: host
+  ccjwgd_aos_web:
+    restart: always
+    container_name: CCJWGC_AOS_WEB_001
+    image: hqggbpvip1:22222/ccjwgd/ccjwgd_aos_web:1.0.0
+    volumes:
+      - /workspace/container_volumes/aos_web/dist:/usr/share/nginx/html
+      - /workspace/container_volumes/aos_web/conf:/etc/nginx/conf.d
+    network_mode: host

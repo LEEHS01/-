@@ -1,0 +1,77 @@
+package co.irexnet.waio.WAIO_ServerAgent.dao;
+
+import co.irexnet.waio.WAIO_ServerAgent.ai_dto.AiProcessControlDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.util.Date;
+import java.util.List;
+
+@Repository
+public class AiFilterControlDAOImpl implements IAiProcessControlDAO
+{
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    @Override
+    public AiProcessControlDTO select(Date update_time, Date run_time, String name, int kafka_flag, int processStep)
+    {
+        String strQuery = "SELECT * FROM " + getTableByProcessStep(processStep) + " WHERE upd_ti=? AND rnti=? AND tag_sn=? AND kfk_flg=?";
+        try
+        {
+            return jdbcTemplate.queryForObject(
+                    strQuery,
+                    new Object[]{update_time, run_time, name, kafka_flag},
+                    new BeanPropertyRowMapper<>(AiProcessControlDTO.class)
+            );
+        }
+        catch(EmptyResultDataAccessException e)
+        {
+            return null;
+        }
+    }
+
+    @Override
+    public List<AiProcessControlDTO> select(Date run_time, int kafka_flag, int processStep)
+    {
+        String strQuery = "SELECT * FROM " +
+                "(SELECT * FROM " + getTableByProcessStep(processStep) + 
+                " WHERE rnti>=? AND kfk_flg=? ORDER BY rnti DESC LIMIT 100) " + getTableByProcessStep(processStep) + " GROUP BY tag_sn ORDER BY rnti";
+        
+        return jdbcTemplate.query(
+                strQuery,
+                new Object[]{run_time, kafka_flag},
+                new BeanPropertyRowMapper<>(AiProcessControlDTO.class)
+        );
+    }
+
+    @Override
+    public int updateKafkaFlag(AiProcessControlDTO dto)
+    {
+        String strQuery = "UPDATE " + getTableByProcessStep(dto.getProcessStep()) + " SET kfk_flg=? WHERE upd_ti=? AND rnti=? AND tag_sn=?";
+        return jdbcTemplate.update(
+                strQuery,
+                dto.getKfk_flg(), dto.getUpd_ti(), dto.getRnti(), dto.getTag_sn()
+        );
+    }
+
+    @Override
+    public int delete(Date date, int processStep)
+    {
+        String strQuery = "DELETE FROM " + getTableByProcessStep(processStep) +  " WHERE upd_ti < ?";
+        return jdbcTemplate.update(strQuery, date);
+    }
+
+    public String getTableByProcessStep(int processStep) {
+        String tableNm = "";
+        if(processStep == 1) {
+            tableNm = "TB_AI_F1_CTR";
+        } else if(processStep == 2) {
+            tableNm = "TB_AI_F2_CTR";
+        }
+        return tableNm;
+    }
+}

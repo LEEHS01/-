@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ccawgd_aos_web:
+    restart: always
+    container_name: CCAWGC_AOS_WEB_001
+    image: hqggbpvip1:22222/ccawgd/ccawgd_aos_web:1.0.0
+    volumes:
+      - /workspace/container_volumes/aos_web/dist:/usr/share/nginx/html
+      - /workspace/container_volumes/aos_web/conf:/etc/nginx/conf.d
+      - /workspace/container_volumes/logs/aos_web:/var/log/nginx
+      #      - /data/docker/volumes/TZ/localtime:/etc/localtime
+      #      - /data/docker/volumes/TZ/timezone:/etc/timezone
+    # ports:
+    #   - "38080:38080"
+    network_mode: host
