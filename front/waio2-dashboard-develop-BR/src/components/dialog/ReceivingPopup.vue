@@ -97,6 +97,22 @@
               {{ this.$store.state.receiving.latestModify.h_target_le_max | numFormat('0.0') }}
             </span> -->
           </div>
+        </div>
+        <!-- 20260226 알파값 추가 -->
+        <div class="right-value">
+          <div class="right-value__text">유출유량 예측 보정 계수<span>(0~1)</span></div>
+          <div class="right-value__input-box" style="margin-left: 45px;">
+            <input type="text" :value="this.$store.state.receiving.latestModify.b_pred_friout_correction_ratio_factor"
+            v-on:input="updateInput($event, 'b_pred_friout_correction_ratio_factor')" maxlength="5">
+          </div>
+        </div>
+        <!-- 실행주기 추가 -->
+        <div class="right-value">
+          <div class="right-value__text">실행주기<span>(초)</span></div>
+          <div class="right-value__input-box" style="margin-left: 45px;">
+            <input type="text" :value="this.$store.state.receiving.latestModify.b_process_period_sec"
+            v-on:input="updateInput($event, 'b_process_period_sec')" maxlength="5">
+          </div>
         </div>  
         <!-- <div v-if="$store.state.login.user.tkn !== null" class="modify-button">
           <div class="custom-icon" @click="updateControl">
@@ -144,7 +160,12 @@ export default {
         || this.$store.state.receiving.latestModify.b_valve_gv_uplmt === ''
         || this.$store.state.receiving.latestModify.b_valve_gv_lolmt === ''
         || this.$store.state.receiving.latestModify.b_valve_bypass_uplmt === ''
-        || this.$store.state.receiving.latestModify.b_valve_bypass_lolmt === '') {
+        || this.$store.state.receiving.latestModify.b_valve_bypass_lolmt === ''
+         //260226 이현수 착수공정 후처리 관련
+          //알파값 및 실행주기 추가
+        || this.$store.state.receiving.latestModify.b_pred_friout_correction_ratio_factor === ''  //260226 알파값 추가
+        || this.$store.state.receiving.latestModify.b_process_period_sec === '') {                //260226 실행주기 추가
+          
           this.$store.dispatch('alertDialog/OPEN_DIALOG', { title: '경고', text1: '값을 입력해주세요' })
         } else if (parseFloat(this.$store.state.receiving.latestModify.h_target_le_min) < waterLevel_min || parseFloat(this.$store.state.receiving.latestModify.h_target_le_max) > waterLevel_max) {
           this.$store.dispatch('alertDialog/OPEN_DIALOG', { title: '경고', text1: '정수지 목표 수위 설정 범위', text2: waterLevel_min + ' ~ ' + waterLevel_max })
@@ -172,7 +193,20 @@ export default {
           parseInt(this.$store.state.receiving.latestModify.b_valve_bypass_uplmt) < b_min || 
           parseInt(this.$store.state.receiving.latestModify.b_valve_bypass_uplmt) > b_max) {
           this.$store.dispatch('alertDialog/OPEN_DIALOG', { title: '경고', text1: '변화율 설정 범위', text2: b_min + ' ~ ' + b_max })
-        } else {
+        }
+        //260226 이현수 착수공정 후처리 관련
+        //알파값 및 실행주기 추가
+        // 알파값 범위 체크 (0~1)
+        else if (parseFloat(this.$store.state.receiving.latestModify.b_pred_friout_correction_ratio_factor) < 0
+          || parseFloat(this.$store.state.receiving.latestModify.b_pred_friout_correction_ratio_factor) > 1) {
+          this.$store.dispatch('alertDialog/OPEN_DIALOG', { title: '경고', text1: '유출유량 예측 보정 계수는 0~1 사이로 입력해주세요' })
+        }
+        // 실행주기 체크 (양의 정수)
+        else if (parseInt(this.$store.state.receiving.latestModify.b_process_period_sec) <60
+          || isNaN(parseInt(this.$store.state.receiving.latestModify.b_process_period_sec))) {
+          this.$store.dispatch('alertDialog/OPEN_DIALOG', { title: '경고', text1: '실행주기는 60초 이상으로 입력해주세요' })
+        } 
+        else {
           let obj = {}
           obj.h_target_le_max = parseFloat(this.$store.state.receiving.latestModify.h_target_le_max).toFixed(1)
           obj.h_target_le_min = parseFloat(this.$store.state.receiving.latestModify.h_target_le_min).toFixed(1)
@@ -185,6 +219,11 @@ export default {
           obj.b_valve_gv_lolmt = parseInt(this.$store.state.receiving.latestModify.b_valve_gv_lolmt)
           obj.b_valve_bypass_uplmt = parseInt(this.$store.state.receiving.latestModify.b_valve_bypass_uplmt)
           obj.b_valve_bypass_lolmt = parseInt(this.$store.state.receiving.latestModify.b_valve_bypass_lolmt)
+
+          //260226 이현수 착수공정 후처리 관련
+          //알파값 및 실행주기 추가
+          obj.b_pred_friout_correction_ratio_factor = parseFloat(this.$store.state.receiving.latestModify.b_pred_friout_correction_ratio_factor)
+          obj.b_process_period_sec = parseInt(this.$store.state.receiving.latestModify.b_process_period_sec)
 
           this.$store.dispatch(PUT_RECEIVING_CONTROL_LEVEL, obj)
           this.$store.state.receiving.isModifyMode = !this.$store.state.receiving.isModifyMode
@@ -199,6 +238,11 @@ export default {
           this.$store.state.receiving.latest.b_valve_gv_lolmt = parseInt(this.$store.state.receiving.latestModify.b_valve_gv_lolmt)
           this.$store.state.receiving.latest.b_valve_bypass_uplmt = parseInt(this.$store.state.receiving.latestModify.b_valve_bypass_uplmt)
           this.$store.state.receiving.latest.b_valve_bypass_lolmt = parseInt(this.$store.state.receiving.latestModify.b_valve_bypass_lolmt)
+
+           //260226 이현수 착수공정 후처리 관련
+          //알파값 및 실행주기 추가
+          this.$store.state.receiving.latest.b_pred_friout_correction_ratio_factor = parseFloat(this.$store.state.receiving.latestModify.b_pred_friout_correction_ratio_factor)
+          this.$store.state.receiving.latest.b_process_period_sec = parseInt(this.$store.state.receiving.latestModify.b_process_period_sec)
         }
       } else {
         this.$store.state.receiving.isModifyMode = !this.$store.state.receiving.isModifyMode

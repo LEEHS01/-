@@ -55,6 +55,10 @@ public class KafkaConsumer
 
     private Date daq1Date = null;
     private Date daq2Date = null;
+    
+    // 20260226 이현수 : 박유리 과장님 요청 로그확인용  
+    // [Timing] 로그용 시각 포맷
+    private static final SimpleDateFormat timingFormat = new SimpleDateFormat("HH:mm:ss.SSS");
 
 	/**
 	 * SCADA 제어 전송 topic
@@ -205,6 +209,10 @@ public class KafkaConsumer
     @KafkaListener(topics = {"${kafka.topic.dpf_scada1}", "${kafka.topic.dpf_scada2}"})
     public void listenScada(List<ConsumerRecord<String, String>> records)
     {
+    	// 20260226 이현수 : 박유리 과장님 요청 로그확인용  
+    	// ========== [Timing] Kafka 수신 시각 ==========
+        long startTime = System.currentTimeMillis();
+    	
         if(daq1Date == null) {
             daq1Date = new Date();
             daq1Date.setTime(daq1Date.getTime() - CommonValue.ONE_HOUR);
@@ -333,6 +341,14 @@ public class KafkaConsumer
 //                    resultMap.get("nDisinfectionUpdateCount")
 //                );
         }
+        // 20260226 이현수 : 박유리 과장님 요청 로그확인용   
+        // ========== [Timing] DB 적재 완료 시각 ==========
+        long endTime = System.currentTimeMillis();
+        log.info("[Timing] KafkaRecv:{}, DBInsertDone:{}, elapsed:{}ms, records:{}",
+            timingFormat.format(new Date(startTime)),
+            timingFormat.format(new Date(endTime)),
+            endTime - startTime,
+            records.size());
     }
 
     /**

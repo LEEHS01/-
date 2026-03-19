@@ -97,14 +97,9 @@ export const DEL_PATHS = 'delPaths'
 
 export const SET_OVERLAY = 'SET_OVERLAY'
 export const SERVICE_URL = {
-  //2026/01/20 실제 빌드할때는 아래 주소로 해야함
-  XAI: 'http://10.65.1.83:38080',
-  EMS: 'http://10.65.1.83:38085',
-  PMS: 'http://10.65.1.83:38095',
-  //2026/01/20 개발환경 빌드시 에는 수정해야함
-    //XAI: 'http://192.168.30.150:48080',
-    //EMS: 'http://192.168.30.150:48085',
-    //PMS: 'http://192.168.30.150:48095',
+    XAI: 'http://192.168.30.150:48080',
+    EMS: 'http://192.168.30.150:48085',
+    PMS: 'http://192.168.30.150:48095',
   // CCTV: 'http://10.231.21.230:20102/index'
 }
 export const COLOR_HIGH = 'rgba(212, 110, 250, 0.4)'

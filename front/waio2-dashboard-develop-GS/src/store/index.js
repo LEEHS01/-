@@ -84,8 +84,8 @@ export const DEL_PATHS = 'delPaths'
 
 export const SET_OVERLAY = 'SET_OVERLAY'
 export const SERVICE_URL = {
-  XAI: 'http://10.93.3.30:38080',
-  EMS: 'http://10.93.3.30:38085',
+  XAI: 'http://192.168.30.100:38090',
+  EMS: 'http://192.168.30.100:38095',
   // PMS: 'http://123.214.174.18:18096',
   CCTV: 'http://10.231.21.230:20102/index'
 }

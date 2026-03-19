@@ -56,7 +56,11 @@ export default {
       b_valve_gv_uplmt: null,
       b_valve_gv_lolmt: null,
       b_valve_bypass_uplmt: null,
-      b_valve_bypass_lolmt: null
+      b_valve_bypass_lolmt: null,
+      //260226 이현수 착수공정후처리 위한 ui 수정 작업
+      // 알파값 및 실행주기 추가
+      b_pred_friout_correction_ratio_factor: null,  // 알파값
+      b_process_period_sec: null                     // 실행주기
     },
     latestModify: {
       upd_ti: null,
@@ -87,7 +91,11 @@ export default {
       b_valve_gv_uplmt: null,
       b_valve_gv_lolmt: null,
       b_valve_bypass_uplmt: null,
-      b_valve_bypass_lolmt: null
+      b_valve_bypass_lolmt: null,
+      //260226 이현수 착수공정후처리 위한 ui 수정 작업
+      // 알파값 및 실행주기 추가
+      b_pred_friout_correction_ratio_factor: null,  // 알파값
+      b_process_period_sec: null                     // 실행주기
     },
     out_fr: {
       series1: null
@@ -109,6 +117,10 @@ export default {
       const fixed_b_valve_gv_lolmt = data.b_valve_gv_lolmt.toFixed(0)
       const fixed_b_valve_bypass_uplmt = data.b_valve_bypass_uplmt.toFixed(0)
       const fixed_b_valve_bypass_lolmt = data.b_valve_bypass_lolmt.toFixed(0)
+      //260226 이현수 착수공정후처리 위한 ui 수정 작업
+      // 알파값 및 실행주기 추가
+      const fixed_b_pred_friout_correction_ratio_factor = data.b_pred_friout_correction_ratio_factor != null ? data.b_pred_friout_correction_ratio_factor : 0
+      const fixed_b_process_period_sec = data.b_process_period_sec != null ? data.b_process_period_sec.toFixed(0) : 0
       const Fixed = {
         h_target_le_max: fixed_h_target_le_max,
         h_target_le_min: fixed_h_target_le_min,
@@ -120,7 +132,11 @@ export default {
         b_valve_gv_uplmt: fixed_b_valve_gv_uplmt,
         b_valve_gv_lolmt: fixed_b_valve_gv_lolmt,
         b_valve_bypass_uplmt: fixed_b_valve_bypass_uplmt,
-        b_valve_bypass_lolmt: fixed_b_valve_bypass_lolmt
+        b_valve_bypass_lolmt: fixed_b_valve_bypass_lolmt,
+        //260226 이현수 착수공정후처리 위한 ui 수정 작업
+        // 알파값 및 실행주기 추가
+        b_pred_friout_correction_ratio_factor: fixed_b_pred_friout_correction_ratio_factor,
+        b_process_period_sec: fixed_b_process_period_sec
       }
       state.latest = Object.assign(state.latest, Fixed)
       if (state.isModifyMode === false) {
@@ -186,9 +202,12 @@ export default {
         commit('alertDialog/OPEN_DIALOG', _data, { root: true })
       })
     },
-    
-    [PUT_CONTROL_LEVEL]: async function ({ commit }, { h_target_le_max, h_target_le_min, b_valve_gv_max, b_valve_gv_min, b_valve_bypass_max, b_valve_bypass_min, b_valve_gv_pwr, b_valve_gv_uplmt, b_valve_gv_lolmt, b_valve_bypass_uplmt, b_valve_bypass_lolmt }) {
-      await axios.put(`${DEV_SERVER}/${URL.RECEIVING_CONTROL_LEVEL}/` + PROCESS_STEP, { h_target_le_max, h_target_le_min, b_valve_gv_max, b_valve_gv_min, b_valve_bypass_max, b_valve_bypass_min, b_valve_gv_pwr, b_valve_gv_uplmt, b_valve_gv_lolmt, b_valve_bypass_uplmt, b_valve_bypass_lolmt })
+    //260226 이현수 착수공정후처리 위한 ui 수정 작업
+    // 알파값 및 실행주기 추가
+   /* [PUT_CONTROL_LEVEL]: async function ({ commit }, { h_target_le_max, h_target_le_min, b_valve_gv_max, b_valve_gv_min, b_valve_bypass_max, b_valve_bypass_min, b_valve_gv_pwr, b_valve_gv_uplmt, b_valve_gv_lolmt, b_valve_bypass_uplmt, b_valve_bypass_lolmt }) {
+      await axios.put(`${DEV_SERVER}/${URL.RECEIVING_CONTROL_LEVEL}/` + PROCESS_STEP, { h_target_le_max, h_target_le_min, b_valve_gv_max, b_valve_gv_min, b_valve_bypass_max, b_valve_bypass_min, b_valve_gv_pwr, b_valve_gv_uplmt, b_valve_gv_lolmt, b_valve_bypass_uplmt, b_valve_bypass_lolmt })*/
+      [PUT_CONTROL_LEVEL]: async function ({ commit }, { h_target_le_max, h_target_le_min, b_valve_gv_max, b_valve_gv_min, b_valve_bypass_max, b_valve_bypass_min, b_valve_gv_pwr, b_valve_gv_uplmt, b_valve_gv_lolmt, b_valve_bypass_uplmt, b_valve_bypass_lolmt, b_pred_friout_correction_ratio_factor, b_process_period_sec }) {
+      await axios.put(`${DEV_SERVER}/${URL.RECEIVING_CONTROL_LEVEL}/` + PROCESS_STEP, { h_target_le_max, h_target_le_min, b_valve_gv_max, b_valve_gv_min, b_valve_bypass_max, b_valve_bypass_min, b_valve_gv_pwr, b_valve_gv_uplmt, b_valve_gv_lolmt, b_valve_bypass_uplmt, b_valve_bypass_lolmt, b_pred_friout_correction_ratio_factor, b_process_period_sec })
       .then(() => {
         let _data = {
           visible: true,
