@@ -51,11 +51,14 @@
               <div class="top-two-contents-value__value">{{ this.$store.state.trtIndMixing.latest.d_ki_dv }}</div>
               <div class="top-two-contents-value__unit">m2/sec</div>
             </div>
+            <!-- 20260421 펜타 하자보수 시각화 요청  / 작업자 : 이현수 / 작업내용 패들면적삭제 -->
+             <!--
             <div class="top-two-contents-value">
               <div class="top-two-contents-value__text">· 패들면적</div>
               <div class="top-two-contents-value__value">{{ this.$store.state.trtIndMixing.latest.d_anr | numFormat('0.00') }}</div>
               <div class="top-two-contents-value__unit">m2</div>
             </div>
+            -->
             <div class="top-two-contents-value">
               <div class="top-two-contents-value__text">· 조 체적</div>
               <div class="top-two-contents-value__value">{{ this.$store.state.trtIndMixing.latest.d_v | numFormat('0.00') }}</div>

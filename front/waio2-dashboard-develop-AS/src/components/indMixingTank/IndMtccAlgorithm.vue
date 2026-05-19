@@ -214,7 +214,8 @@ export default {
   },
   watch: {
     '$store.state.indMixing.selectedFCLocation': function() {
-      this.dataDetail()
+      //20260421 펜타 하자보수 시각화 수정 요청 작업자 : 온더시스 이현수 / 1~10지 추가로인한 딜레이 발생으로 NULL 처리 때문에 해당코드에서 오류발생
+      //this.dataDetail()
     }
   },
   /**

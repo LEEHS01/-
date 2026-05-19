@@ -51,11 +51,14 @@
               <div class="top-two-contents-value__value">{{ this.$store.state.indMixing.latest.d_ki_dv }}</div>
               <div class="top-two-contents-value__unit">m2/sec</div>
             </div>
-            <div class="top-two-contents-value">
+            <!--20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+                1. 패들면적 삭제 출력부  삭제-->
+            <!--<div class="top-two-contents-value">
               <div class="top-two-contents-value__text">· 패들면적</div>
               <div class="top-two-contents-value__value">{{ this.$store.state.indMixing.latest.d_anr | numFormat('0.00') }}</div>
               <div class="top-two-contents-value__unit">m2</div>
             </div>
+            -->
             <div class="top-two-contents-value">
               <div class="top-two-contents-value__text">· 조 체적</div>
               <div class="top-two-contents-value__value">{{ this.$store.state.indMixing.latest.d_v | numFormat('0.00') }}</div>
@@ -81,37 +84,45 @@
           </div>
         </div>
         <div class="top-container">
+          <!-- 20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+            2. RPM -> HZ 수정 -->
           <div class="top-container__real-box">
             <div class="top-container__real-text">#1 현재 응집기 속도</div>
             <div class="top-container__real-value">{{ this.getFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step1['1'] | numFormat('0.00') }}</div>
-            <div class="top-container__real-unit">RPM</div>
+            <!--<div class="top-container__real-unit">RPM</div>-->
+            <div class="top-container__real-unit">HZ</div>
           </div>
           <div class="top-two-contents-value">
             <div class="top-two-contents-value__text">· #1</div>
             <div class="top-two-contents-value__value">{{ this.getAIFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step1['1'] | numFormat('0.00') }}</div>
-            <div class="top-two-contents-value__unit">RPM</div>
+            <!--<div class="top-two-contents-value__unit">RPM</div>-->
+            <div class="top-two-contents-value__unit">HZ</div>
           </div>
           <div class="contents-value-underbar"></div>
           <div class="top-container__real-box">
             <div class="top-container__real-text">#2 현재 응집기 속도</div>
             <div class="top-container__real-value">{{ this.getFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step2['1'] | numFormat('0.00') }}</div>
-            <div class="top-container__real-unit">RPM</div>
+            <!--<div class="top-container__real-unit">RPM</div>-->
+            <div class="top-container__real-unit">HZ</div>
           </div>          
           <div class="top-two-contents-value">
             <div class="top-two-contents-value__text">· #2</div>
             <div class="top-two-contents-value__value">{{ this.getAIFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step2['1'] | numFormat('0.00') }}</div>
-            <div class="top-two-contents-value__unit">RPM</div>
+            <!--<div class="top-two-contents-value__unit">RPM</div>-->
+            <div class="top-two-contents-value__unit">HZ</div>
           </div>
           <div class="contents-value-underbar"></div>
           <div class="top-container__real-box">
             <div class="top-container__real-text">#3 현재 응집기 속도</div>
             <div class="top-container__real-value">{{ this.getFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step3['1'] | numFormat('0.00') }}</div>
-            <div class="top-container__real-unit">RPM</div>
+            <!--<div class="top-container__real-unit">RPM</div>-->
+            <div class="top-container__real-unit">HZ</div>
           </div>               
           <div class="top-two-contents-value">
             <div class="top-two-contents-value__text">· #3</div>
             <div class="top-two-contents-value__value">{{ this.getAIFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step3['1'] | numFormat('0.00') }}</div>
-            <div class="top-two-contents-value__unit">RPM</div>
+            <!--<div class="top-two-contents-value__unit">RPM</div>-->
+            <div class="top-two-contents-value__unit">HZ</div>
           </div>
         </div>
       </div>
@@ -128,7 +139,9 @@
       <div class="bottom-chart-box">
         <div class="bottom-chart-box__title">응집기 설정 속도 예측</div>
         <div class="select-box">
-          <div v-for="index in [11,12]" :key="index" class="select-box__element" @click="selectedLocation = index" :class="{ 'select-box__element--focused': selectedLocation === index}">{{ index }}지</div>
+          <!-- 20260421 펜타 하자보수 시각화 요청  / 작업자 : 이현수 / 작업내용 11,12지에서 1~12지로 추가 -->
+          <!--<div v-for="index in [11,12]" :key="index" class="select-box__element" @click="selectedLocation = index" :class="{ 'select-box__element--focused': selectedLocation === index}">{{ index }}지</div>-->
+          <div v-for="index in [1,2,3,4,5,6,7,8,9,10,11,12]" :key="index" class="select-box__element" @click="selectedLocation = index" :class="{ 'select-box__element--focused': selectedLocation === index}">{{ index }}지</div>
           </div>
         <div class="bottom-chart">
           <highcharts :options="ChartAGSpeed" style="height:100%;"/>
@@ -282,7 +295,9 @@ export default {
       tooltip: {
         valueDecimals: 2,
         xDateFormat: '%Y-%m-%d %H:%M:%S',
-        valueSuffix: 'RPM'
+        // 20260421 펜타 하자보수 관련 시각화 수정 요청/ 작업자: 온더시스 이현수/ 작업내용 RPM -> HZ 수정
+        //valueSuffix: 'RPM' 
+        valueSuffix: 'HZ'
       },
       xAxis: {
         title: {
@@ -302,7 +317,9 @@ export default {
       yAxis: {
         title: {
           align: 'high',
-          text: 'RPM',
+        // 20260421 펜타 하자보수 관련 시각화 수정 요청/ 작업자: 온더시스 이현수/ 작업내용 RPM -> HZ 수정 
+        // text: 'RPM',
+          text: 'HZ',
           useHTML: true,
           offset: 0,
           rotation: 0,
@@ -493,10 +510,14 @@ export default {
      * @return 현재 속도
      */
     getFCLocationSpeed: function (location) {
-      return this.$store.state.indMixing.latest['d_loc_fc_sp' + location]
+      //20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+      //return this.$store.state.indMixing.latest['d_loc_fc_sp' + location]
+      return this.$store.state.indMixing.latest['d_loc_fc_sp' + location] || { step1: { 1: 0 }, step2: { 1: 0 }, step3: { 1: 0 } }
     },
     getAIFCLocationSpeed: function(location) {
-      return this.$store.state.indMixing.latest['ai_d_loc_fc_sp' + location]
+      //20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+      //return this.$store.state.indMixing.latest['ai_d_loc_fc_sp' + location]
+      return this.$store.state.indMixing.latest['ai_d_loc_fc_sp' + location] || { step1: { 1: 0 }, step2: { 1: 0 }, step3: { 1: 0 } }
     },
     
     cancelControl: function() {

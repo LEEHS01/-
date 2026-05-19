@@ -19,30 +19,38 @@
       </div>
       <!-- 지 선택 박스 -->
       <div class="select-box">
-        <div v-for="index in [11,12]" :key="index" class="select-box__element" @click="$store.state.indMixing.selectedFCLocation = index" :class="{ 'select-box__element--focused': $store.state.indMixing.selectedFCLocation === index}">
+        <!-- 20260421 펜타 하자보수 시각화 요청  / 작업자 : 이현수 / 작업내용 11,12지에서 1~12지로 추가 -->
+        <!--<div v-for="index in [11,12]" :key="index" class="select-box__element" @click="$store.state.indMixing.selectedFCLocation = index" :class="{ 'select-box__element--focused': $store.state.indMixing.selectedFCLocation === index}">-->
+        <div v-for="index in [1,2,3,4,5,6,7,8,9,10,11,12]" :key="index" class="select-box__element" @click="$store.state.indMixing.selectedFCLocation = index" :class="{ 'select-box__element--focused': $store.state.indMixing.selectedFCLocation === index}">
           <span>{{ index }}지</span>
         </div>
       </div>
       <div class="value-title first">#1</div>
       <div class="contents-img-box one">
-        <div class="contents-img-box__text">RPM</div>
+       <!-- 20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+            2. RPM -> HZ 수정 -->
+       <!-- <div class="contents-img-box__text">RPM</div> -->
+        <div class="contents-img-box__text">HZ</div>
         <div class="contents-img-box__num">{{ this.getFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step1['1'] | numFormat('0.00') }}</div>
       </div>
       <div class="value-title second">#2</div>
       <div class="contents-img-box two">
-        <div class="contents-img-box__text">RPM</div>
+        <!--<div class="contents-img-box__text">RPM</div>-->
+        <div class="contents-img-box__text">HZ</div>
         <div class="contents-img-box__num">{{ this.getFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step2['1'] | numFormat('0.00') }}</div>
       </div>
       <div class="value-title third">#3</div>
       <div class="contents-img-box three">
-        <div class="contents-img-box__text">RPM</div>
+        <!--<div class="contents-img-box__text">RPM</div>-->
+        <div class="contents-img-box__text">HZ</div>
         <div class="contents-img-box__num">{{ this.getFCLocationSpeed(this.$store.state.indMixing.selectedFCLocation).step3['1'] | numFormat('0.00') }}</div>
       </div>
     </div>
     <!-- 계열별 지 운영 상태 -->
-    <div class="contents-container">
+     <!-- 20260421 펜타 하자보수 시각화 요청  / 작업자 : 이현수 / 작업내용 11,12지에서 1~12지로 추가 -->
+    <!--<div class="contents-container">-->
       <!-- 2계열 지별 상태 -->
-      <div class="box">
+      <!-- <div class="box">
         <div class="legend-box">
           <div class="legend-box__legend legend-box__legend--bw">운영</div>
           <div class="legend-box__legend legend-box__legend--schedule">미운영</div>
@@ -70,15 +78,74 @@
             <div :class="[ getFCLocationState(index).step3['3'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
           </div>
         </div>
+      </div> 
+    </div>-->
+
+    <div class="contents-container">
+  <!-- 1~6지 -->
+  <div class="box">
+    <div class="box-title">
+      <div class="box-title__text">#1</div>
+      <div class="box-title__text margin-side-19">#2</div>
+      <div class="box-title__text">#3</div>
+    </div>
+    <div v-for="index in [1,2,3,4,5,6]" :key="index" class="box-contents">
+      <div class="box-contents__ji">{{ index }}지</div>
+      <div class="box-contents-led">
+        <div :class="[ getFCLocationState(index).step1['1'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div class="margin-h-auto" :class="[ getFCLocationState(index).step1['2'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div :class="[ getFCLocationState(index).step1['3'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+      </div>
+      <div class="box-contents-led">
+        <div :class="[ getFCLocationState(index).step2['1'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div class="margin-h-auto" :class="[ getFCLocationState(index).step2['2'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div :class="[ getFCLocationState(index).step2['3'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+      </div>
+      <div class="box-contents-led last-padding-left">
+        <div :class="[ getFCLocationState(index).step3['1'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div class="margin-h-auto" :class="[ getFCLocationState(index).step3['2'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div :class="[ getFCLocationState(index).step3['3'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
       </div>
     </div>
+  </div>
+  <!-- 7~12지 -->
+  <div class="box">
+    <div class="legend-box">
+      <div class="legend-box__legend legend-box__legend--bw">운영</div>
+      <div class="legend-box__legend legend-box__legend--schedule">미운영</div>
+    </div>
+    <div class="box-title">
+      <div class="box-title__text">#1</div>
+      <div class="box-title__text margin-side-19">#2</div>
+      <div class="box-title__text">#3</div>
+    </div>
+    <div v-for="index in [7,8,9,10,11,12]" :key="index" class="box-contents">
+      <div class="box-contents__ji">{{ index }}지</div>
+      <div class="box-contents-led">
+        <div :class="[ getFCLocationState(index).step1['1'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div class="margin-h-auto" :class="[ getFCLocationState(index).step1['2'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div :class="[ getFCLocationState(index).step1['3'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+      </div>
+      <div class="box-contents-led">
+        <div :class="[ getFCLocationState(index).step2['1'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div class="margin-h-auto" :class="[ getFCLocationState(index).step2['2'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div :class="[ getFCLocationState(index).step2['3'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+      </div>
+      <div class="box-contents-led last-padding-left">
+        <div :class="[ getFCLocationState(index).step3['1'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div class="margin-h-auto" :class="[ getFCLocationState(index).step3['2'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+        <div :class="[ getFCLocationState(index).step3['3'] ? 'box-contents-led__on' : 'box-contents-led__off']"></div>
+      </div>
+    </div>
+  </div>
+</div>
   </div>  
 </template>
 <script>
 export default {
   name: 'IndMtccLeftContents',
   data: () => ({}),
-  methods: {
+    methods: {
     /**
      * 선택된 지의 속도를 반환힘
      * 
@@ -86,7 +153,9 @@ export default {
      * @return 선택된 지의 현재 속도
      */
     getFCLocationSpeed: function (location) {
-      return this.$store.state.indMixing.latest['d_loc_fc_sp' + location]
+      //20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+      //return this.$store.state.indMixing.latest['d_loc_fc_sp' + location]
+      return this.$store.state.indMixing.latest['d_loc_fc_sp' + location] || { step1: { 1: 0 }, step2: { 1: 0 }, step3: { 1: 0 } }
     },
     /**
      * 선택된 지의 상태를 반환힘
@@ -95,7 +164,9 @@ export default {
      * @return 선택된 지의 현재 상태
      */
     getFCLocationState: function (location) {
-      return this.$store.state.indMixing.latest['d_loc_fc_stt' + location]
+      //20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+      //return this.$store.state.indMixing.latest['d_loc_fc_stt' + location]
+      return this.$store.state.indMixing.latest['d_loc_fc_stt' + location] || { step1: { 1: false, 2: false, 3: false }, step2: { 1: false, 2: false, 3: false }, step3: { 1: false, 2: false, 3: false } }
     }
   }
 }
@@ -185,14 +256,17 @@ export default {
       line-height: 35px;
       cursor: pointer;
     }
-  }    
+  }
+  //20260421 펜타 하자보수 시각화 수정 요청/ 작업자 : 온더시스 이현수 / 작업내용 시각화수정    
   .contents-container{
     display: flex;
     width: 586px;
-    height: 381px;
+    height: 475px;
+    //20260421 펜타 하자보수 시각화 수정 요청/ 작업자 : 온더시스 이현수 / 작업내용 시각화수정
     .box{
       position: relative;
-      width: 100%;
+      //width: 100%;
+      width: 50%;
       height: 100%;
       margin-top: 2px;
       // padding-top: 35px;
@@ -204,8 +278,10 @@ export default {
         .last-padding-left{
         padding-left: 9px;
         }
+        //20260421 펜타 하자보수 시각화 수정 요청/ 작업자 : 온더시스 이현수 / 작업내용 시각화수정
         .box-contents-led{
-          width: 170px;
+          //width: 170px;
+          width: 85px;
           height: 100%;
           display: flex;
           flex-flow: column;
@@ -248,9 +324,12 @@ export default {
       .box-title{
         display: flex;
         height: 30px;
-        margin: 40px 0 23px 85px;
+        //20260421 펜타 하자보수 시각화 수정 요청/ 작업자 : 온더시스 이현수 / 작업내용 시각화수정
+        //margin: 40px 0 23px 85px;
+        margin: 40px 0 23px 47px;
         .margin-side-19{
-          margin: 0 100px ;
+          //margin: 0 100px ;
+          margin: 0 15px;
         }
         &__text{
           width: 72px;
@@ -344,16 +423,19 @@ export default {
     position: relative;
 
     // margin: 15px 0;
+    //20260421 펜타 하자보수 시각화 수정 요청/ 작업자 : 온더시스 이현수 / 작업내용 시각화수정
     .select-box{
       display: flex;
       justify-content: space-between;
-      margin: 0 175px;
+      //margin: 0 175px;  
+      margin: 0 10px;
       &__element{
         display:flex;
         flex-direction: column;
         justify-content: center;
         align-content: center;
-        width: 60px;
+        //width: 60px;
+        width: 45px;
         height: 30px;
         border: solid 1px #b4dffa;
         background-color: rgba(139, 194, 240, 0.25);

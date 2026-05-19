@@ -76,37 +76,45 @@
           </div>
         </div>
         <div class="top-container">
+        <!-- 20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+            2. RPM -> HZ 수정 -->
           <div class="top-container__real-box">
             <div class="top-container__real-text">#1 현재 응집기 속도</div>
             <div class="top-container__real-value">{{ this.getFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step1['1'] | numFormat('0.00') }}</div>
-            <div class="top-container__real-unit">RPM</div>
+            <!--<div class="top-container__real-unit">RPM</div>-->
+            <div class="top-container__real-unit">HZ</div>
           </div>
           <div class="top-two-contents-value">
             <div class="top-two-contents-value__text">· #1</div>
             <div class="top-two-contents-value__value">{{ this.getAIFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step1['1'] | numFormat('0.00') }}</div>
-            <div class="top-two-contents-value__unit">RPM</div>
+            <!--<div class="top-two-contents-value__unit">RPM</div>-->
+            <div class="top-two-contents-value__unit">HZ</div>
           </div>
           <div class="contents-value-underbar"></div>
           <div class="top-container__real-box">
             <div class="top-container__real-text">#2 현재 응집기 속도</div>
             <div class="top-container__real-value">{{ this.getFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step2['1'] | numFormat('0.00') }}</div>
-            <div class="top-container__real-unit">RPM</div>
+            <!--<div class="top-container__real-unit">RPM</div>-->
+            <div class="top-container__real-unit">HZ</div>
           </div>
           <div class="top-two-contents-value">
             <div class="top-two-contents-value__text">· #2</div>
             <div class="top-two-contents-value__value">{{ this.getAIFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step2['1'] | numFormat('0.00') }}</div>
-            <div class="top-two-contents-value__unit">RPM</div>
+            <!--<div class="top-two-contents-value__unit">RPM</div>-->
+            <div class="top-two-contents-value__unit">HZ</div>
           </div>
           <div class="contents-value-underbar"></div>
           <div class="top-container__real-box">
             <div class="top-container__real-text">#3 현재 응집기 속도</div>
             <div class="top-container__real-value">{{ this.getFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step3['1'] | numFormat('0.00') }}</div>
-            <div class="top-container__real-unit">RPM</div>
+            <!--<div class="top-container__real-unit">RPM</div>-->
+            <div class="top-container__real-unit">HZ</div>
           </div>
           <div class="top-two-contents-value">
             <div class="top-two-contents-value__text">· #3</div>
             <div class="top-two-contents-value__value">{{ this.getAIFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step3['1'] | numFormat('0.00') }}</div>
-            <div class="top-two-contents-value__unit">RPM</div>
+            <!--<div class="top-two-contents-value__unit">RPM</div>-->
+            <div class="top-two-contents-value__unit">HZ</div>
           </div>
         </div>
       </div>
@@ -282,7 +290,9 @@ export default {
       tooltip: {
         valueDecimals: 2,
         xDateFormat: '%Y-%m-%d %H:%M:%S',
-        valueSuffix: 'RPM'
+        // 20260421 펜타 하자보수 관련 시각화 수정 요청/ 작업자: 온더시스 이현수/ 작업내용 RPM -> HZ 수정
+        //valueSuffix: 'RPM' 
+        valueSuffix: 'HZ'
       },
       xAxis: {
         title: {
@@ -302,7 +312,9 @@ export default {
       yAxis: {
         title: {
           align: 'high',
-          text: 'RPM',
+          // 20260421 펜타 하자보수 관련 시각화 수정 요청/ 작업자: 온더시스 이현수/ 작업내용 RPM -> HZ 수정
+          // text: 'RPM',
+          text: 'HZ',
           useHTML: true,
           offset: 0,
           rotation: 0,

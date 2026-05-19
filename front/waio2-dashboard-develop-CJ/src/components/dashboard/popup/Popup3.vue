@@ -27,10 +27,13 @@
           <div class="popup-data__text">· 동점성 계수</div>
           <div class="popup-data__value">{{ this.$store.state.dashboard[this.$store.state.dashboard.processStep].mixingLatest.d_ki_dv }}<span>m2/sec</span></div>
         </div>
+        <!-- 20260424 펜타 하자보수 시각화 수정 요청 / 온더시스 이현수/ hz->rpm-->
+        <!--
         <div class="popup-data">
           <div class="popup-data__text">· 패들면적</div>
           <div class="popup-data__value">{{ this.$store.state.dashboard[this.$store.state.dashboard.processStep].mixingLatest.d_anr | numFormat('0.00') }}<span>m<sup>2</sup></span></div>
         </div>
+        -->
         <div class="popup-data">
           <div class="popup-data__text">· 조 체적</div>
           <div class="popup-data__value">{{ this.$store.state.dashboard[this.$store.state.dashboard.processStep].mixingLatest.d_v | numFormat('0.00') }}<span>m<sup>3</sup></span></div>

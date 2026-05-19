@@ -99,9 +99,9 @@ export const SERVICE_URL = {
   //CCTV: 'http://10.231.21.230:20102/index'
 
   //회사 개발환경 빌드 버전
-  XAI: 'http://192.168.30.100:28080',
+  XAI: 'http://192.168.30.150:28080',
   EMS: '',
-  PMS: 'http://192.168.30.100:28095',
+  PMS: 'http://192.168.30.150:28095',
 }
 export const COLOR_HIGH = 'rgba(212, 110, 250, 0.4)'
 export const COLOR_MID = 'rgba(126, 110, 250, 0.4)'

@@ -23,19 +23,24 @@
       </div>
       <div class="value-title first">#1</div>
       <div class="contents-img-box one">
-        <div class="contents-img-box__text">RPM</div>
+        <!-- 20260421 펜타 하자보수 관련 시각화 수정 요청 - 작업자: 온더시스 이현수
+            2. RPM -> HZ 수정 -->
+        <!--<div class="contents-img-box__text">RPM</div>-->
+        <div class="contents-img-box__text">HZ</div>
         <div class="contents-img-box__num">{{ this.getFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step1['1'] | numFormat('0.00') }}</div>
         <!-- <div class="contents-img-box__text">Hz</div> -->
       </div>
       <div class="value-title second">#2</div>
       <div class="contents-img-box two">
-        <div class="contents-img-box__text">RPM</div>
+        <!--<div class="contents-img-box__text">RPM</div>-->
+        <div class="contents-img-box__text">HZ</div>
         <div class="contents-img-box__num">{{ this.getFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step2['1'] | numFormat('0.00') }}</div>
         <!-- <div class="contents-img-box__text">Hz</div> -->
       </div>
       <div class="value-title third">#3</div>
       <div class="contents-img-box three">
-        <div class="contents-img-box__text">RPM</div>
+        <!--<div class="contents-img-box__text">RPM</div>-->
+        <div class="contents-img-box__text">HZ</div>
         <div class="contents-img-box__num">{{ this.getFCLocationSpeed(this.$store.state.mixing.selectedFCLocation).step3['1'] | numFormat('0.00') }}</div>
       </div>
     </div>
